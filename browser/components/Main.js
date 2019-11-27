@@ -55,8 +55,7 @@ export default class Main extends Component {
       <div>
         <h1>Students</h1>
         <button type="submit" onClick={this.handleClick}>Add a New Student</button>
-        <br />
-        {this.state.showForm ? <NewStudentForm onChange={this.handleChange}/> : null}
+        {this.state.showForm ? (<NewStudentForm onChange={this.handleChange}/>) : null}
         <table>
           <thead>
             <tr>

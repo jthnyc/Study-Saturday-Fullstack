@@ -10,6 +10,9 @@ const NewStudentForm = (props) => {
             <label htmlFor="lastName">Last Name: </label>
             <input type="text" name="lastName" onChange={props.handleChange} />
             <br />
+            <button type="submit">Add a New Student</button>
+            <br />
+            <br />
         </form>
     )
 }
