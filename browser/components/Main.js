@@ -16,6 +16,7 @@ export default class Main extends Component {
 
     this.selectStudent = this.selectStudent.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.addStudent = this.addStudent.bind(this)
   }
 
   componentDidMount() {
@@ -27,7 +28,7 @@ export default class Main extends Component {
     try {
       const { data } = await axios.get('/student');
       this.setState({ students: data });
-      console.log('THis is the State', this.state);
+      console.log('This is the State', this.state);
     } catch (err) {
       console.error(err);
     }
@@ -45,13 +46,21 @@ export default class Main extends Component {
     });
   }
 
+  // almost like a helper function to update student list after submit
+  async addStudent() {
+    const res = await axios.get('/student')
+    this.setState({
+      students: res.data
+    })
+  }
+
   render() {
     console.log('this is the state in main', this.state);
     return (
       <div>
         <h1>Students</h1>
         <button onClick={this.handleClick}>Add Student</button>
-        {this.state.showStudent ? <NewStudentForm /> : null}
+        {this.state.showStudent ? <NewStudentForm addStudent={this.addStudent}/> : null}
         <table>
           <thead>
             <tr>
